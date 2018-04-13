@@ -59,7 +59,8 @@ function! inline_edit#MarkdownFencedCode()
     return []
   endif
   let start    = line('.') + 1
-  let filetype = matchlist(getline('.'), start_pattern, 0)[1]
+  let m_start  = matchlist(getline('.'), start_pattern, 0)
+  let filetype = empty(m_start) ? &ft : m_start[1]
 
   " find end of area
   if searchpair(start_pattern, '', end_pattern, 'W') <= 0
