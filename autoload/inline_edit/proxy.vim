@@ -126,6 +126,7 @@ function! s:CreateProxyBuffer(proxy, lines)
 
     setlocal buftype=acwrite
     setlocal bufhidden=wipe
+    setlocal noswapfile  " Prevent the sporadic 'Found a swap file' errors
     call append(0, lines)
     $delete _
     set nomodified
